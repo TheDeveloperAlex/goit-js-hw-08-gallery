@@ -104,12 +104,13 @@ btnCloseModal.addEventListener('click', e => {
   modalImg.alt = '';
 });
 
-
+// console.log(listNode.lastChild.querySelector('img').dataset.source);
+console.log(listNode.lastChild.querySelector('img').dataset.source);
 
 
 // ДОП ЗАДАНИЕ
 
-
+console.log(listNode.firstChild.querySelector('img').dataset.source);
 
 // Закрытие модалки по клику на оверлей
 
@@ -145,8 +146,17 @@ const arrowBtnRight = document.addEventListener('keydown', e => {
   const neighbourRightImg = document.getElementById(neighbourRightImgId);
   // console.log(neighbourRightImg);
   modalImg.src = neighbourRightImg.dataset.source;
+  // console.log(neighbourRightImg.dataset.source);
   modalImg.alt = neighbourRightImg.alt;
   modalImg.id = neighbourRightImg.id;
+
+  // console.log(listNode.firstChild.querySelector('img').dataset.source);
+
+  if (+neighbourRightImg.id > +listNode.lastChild.querySelector('img').id) {
+    modalImg.src = listNode.firstChild.querySelector('img').dataset.source;
+    modalImg.alt = listNode.firstChild.querySelector('img').alt;
+    modalImg.id = listNode.firstChild.querySelector('img').id;
+  }
 });
 
 const arrowBtnLeft = document.addEventListener('keydown', e => {
@@ -158,6 +168,13 @@ const arrowBtnLeft = document.addEventListener('keydown', e => {
   modalImg.src = neighbourRightImg.dataset.source;
   modalImg.alt = neighbourRightImg.alt;
   modalImg.id = neighbourRightImg.id;
+
+  if (+neighbourRightImg.id < +listNode.firstChild.querySelector('img').id) {
+    modalImg.src = listNode.lastChild.querySelector('img').dataset.source;
+    modalImg.alt = listNode.lastChild.querySelector('img').alt;
+    modalImg.id = listNode.lastChild.querySelector('img').id;
+    
+  }
 });
 
 
