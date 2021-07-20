@@ -140,41 +140,37 @@ const escBtnClose = document.addEventListener('keydown', e => {
 // e.keyCode !== 37 - Если нажата стрелка влево
 
 const arrowBtnRight = document.addEventListener('keydown', e => {
-  if (e.keyCode !== 39) return false;
-  const neighbourRightImgId = +modalImg.id + 1;
-  // console.log(neighbourRightImgId);
-  const neighbourRightImg = document.getElementById(neighbourRightImgId);
-  // console.log(neighbourRightImg);
+  if (e.keyCode === 39) {
+    const neighbourRightImgId = +modalImg.id + 1;
+  let neighbourRightImg = document.getElementById(neighbourRightImgId);
+  if (!neighbourRightImg) neighbourRightImg = listNode.firstChild.querySelector('img');
   modalImg.src = neighbourRightImg.dataset.source;
-  // console.log(neighbourRightImg.dataset.source);
   modalImg.alt = neighbourRightImg.alt;
   modalImg.id = neighbourRightImg.id;
+  };
+
+  
 
   // console.log(listNode.firstChild.querySelector('img').dataset.source);
 
-  if (+neighbourRightImg.id > +listNode.lastChild.querySelector('img').id) {
-    modalImg.src = listNode.firstChild.querySelector('img').dataset.source;
-    modalImg.alt = listNode.firstChild.querySelector('img').alt;
-    modalImg.id = listNode.firstChild.querySelector('img').id;
-  }
+  if (e.keyCode === 37) {
+    const neighbourLeftImgId = +modalImg.id - 1;
+  let neighbourLeftImg = document.getElementById(neighbourLeftImgId);
+  if (!neighbourLeftImg) neighbourLeftImg = listNode.lastChild.querySelector('img');
+  modalImg.src = neighbourLeftImg.dataset.source;
+  modalImg.alt = neighbourLeftImg.alt;
+  modalImg.id = neighbourLeftImg.id;
+  };
+  
+
 });
 
-const arrowBtnLeft = document.addEventListener('keydown', e => {
-  if (e.keyCode !== 37) return false;
-  const neighbourRightImgId = +modalImg.id - 1;
-  // console.log(neighbourRightImgId);
-  const neighbourRightImg = document.getElementById(neighbourRightImgId);
-  // console.log(neighbourRightImg);
-  modalImg.src = neighbourRightImg.dataset.source;
-  modalImg.alt = neighbourRightImg.alt;
-  modalImg.id = neighbourRightImg.id;
+// const arrowBtnLeft = document.addEventListener('keydown', e => {
+ 
 
-  if (+neighbourRightImg.id < +listNode.firstChild.querySelector('img').id) {
-    modalImg.src = listNode.lastChild.querySelector('img').dataset.source;
-    modalImg.alt = listNode.lastChild.querySelector('img').alt;
-    modalImg.id = listNode.lastChild.querySelector('img').id;
-    
-  }
-});
+  
+
+  
+// });
 
 
